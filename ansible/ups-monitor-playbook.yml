@@ -44,6 +44,7 @@
     - include_role:
         name: cloudalchemy.grafana
       vars:
+        grafana_dashboards_dir: "../../../dashboards"
         grafana_datasources:
           - name: prometheus
             type: prometheus
