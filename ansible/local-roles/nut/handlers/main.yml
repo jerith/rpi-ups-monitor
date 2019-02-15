@@ -1,0 +1,13 @@
+---
+
+- name: restart_nut_driver
+  service:
+    name: nut-driver
+    state: restarted
+    enabled: yes
+
+- name: restart_nut_server
+  service:
+    name: nut-server
+    state: restarted
+    enabled: yes

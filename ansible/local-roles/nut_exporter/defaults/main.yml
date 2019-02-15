@@ -1,0 +1,9 @@
+---
+
+nut_exporter_port: null
+nut_exporter_ups: null
+
+# These are from the node exporter module we use, but redefined here just in
+# case.
+prometheus_exporters_common_user: promexp
+prometheus_exporters_common_group: promexp

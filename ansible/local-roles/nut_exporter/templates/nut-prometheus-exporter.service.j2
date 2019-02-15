@@ -1,0 +1,22 @@
+[Unit]
+Description=NUT Prometheus Exporter
+After=nut-server.service
+
+[Service]
+Type=simple
+User={{ prometheus_exporters_common_user }}
+Group={{ prometheus_exporters_common_group }}
+{% if nut_exporter_port %}
+Environment=NE_PORT={{ nut_exporter_port }}
+{% endif %}
+{% if nut_exporter_ups %}
+Environment=NE_UPS={{ nut_exporter_ups }}
+{% endif %}
+ExecStart=/usr/local/bin/nut-exporter.py
+
+SyslogIdentifier=nut_prometheus_exporter
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target

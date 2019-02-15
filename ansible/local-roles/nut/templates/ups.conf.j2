@@ -1,0 +1,12 @@
+{% for name, cfg in nut_ups|dictsort %}
+[{{ name }}]
+    driver = {{ cfg.driver }}
+    port = {{ cfg.port | default("auto") }}
+{% for field, value in cfg|dictsort if field not in ["driver", "port"] %}
+    {{ field }} = {{ value }}
+{% endfor %}
+{# It's nice to have a newline between blocks. #}
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}

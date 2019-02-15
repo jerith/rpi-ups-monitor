@@ -1,0 +1,19 @@
+---
+
+- name: deploy exporter
+  copy:
+    src: nut-exporter.py
+    dest: /usr/local/bin/nut-exporter.py
+    mode: 0755
+    owner: "{{ prometheus_exporters_common_user }}"
+    group: "{{ prometheus_exporters_common_group }}"
+
+- name: deploy systemd unit
+  template:
+    src: nut-prometheus-exporter.service.j2
+    dest: /etc/systemd/system/nut-prometheus-exporter.service
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart_nut_exporter
