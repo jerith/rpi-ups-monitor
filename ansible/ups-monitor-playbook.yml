@@ -2,32 +2,32 @@
 - hosts: all
   tasks:
 
-    # - include_role:
-    #     name: nut
-    #   vars:
-    #     nut_ups:
-    #       trini:
-    #         driver: blazer_usb
-    #         desc: trini
+    - include_role:
+        name: nut
+      vars:
+        nut_ups:
+          trini:
+            driver: blazer_usb
+            desc: trini
 
-    # - include_role:
-    #     name: UnderGreen.prometheus-node-exporter
-    #   vars:
-    #     prometheus_node_exporter_version: 0.17.0
-    #     prometheus_node_exporter_release_name: node_exporter-{{ prometheus_node_exporter_version }}.linux-armv7
-    #     # Change these to avoid conflicts with cloudalchemy.prometheus.
-    #     prometheus_exporters_common_user: promexp
-    #     prometheus_exporters_common_group: promexp
-    #     prometheus_exporters_common_root_dir: /opt/promexp
-    #     prometheus_exporters_common_log_dir: /var/log/promexp
-    #     prometheus_exporters_common_conf_dir: /etc/promexp
+    - include_role:
+        name: UnderGreen.prometheus-node-exporter
+      vars:
+        prometheus_node_exporter_version: 0.17.0
+        prometheus_node_exporter_release_name: node_exporter-{{ prometheus_node_exporter_version }}.linux-armv7
+        # Change these to avoid conflicts with cloudalchemy.prometheus.
+        prometheus_exporters_common_user: promexp
+        prometheus_exporters_common_group: promexp
+        prometheus_exporters_common_root_dir: /opt/promexp
+        prometheus_exporters_common_log_dir: /var/log/promexp
+        prometheus_exporters_common_conf_dir: /etc/promexp
 
-    # - include_role:
-    #     name: nut_exporter
-    #   vars:
-    #     nut_exporter_ups: trini
-    #     prometheus_exporters_common_user: promexp
-    #     prometheus_exporters_common_group: promexp
+    - include_role:
+        name: nut_exporter
+      vars:
+        nut_exporter_ups: trini
+        prometheus_exporters_common_user: promexp
+        prometheus_exporters_common_group: promexp
 
     - include_role:
         name: cloudalchemy.prometheus
@@ -40,19 +40,19 @@
                 - localhost:9100
                 - localhost:9230
 
-    # - include_role:
-    #     name: cloudalchemy.grafana
-    #   vars:
-    #     grafana_datasources:
-    #       - name: prometheus
-    #         type: prometheus
-    #         access: proxy
-    #         url: http://127.0.0.1:9090
-    #         basicAuth: false
-    #     grafana_security:
-    #       admin_user: admin
-    #       admin_password: nimda
-    #     grafana_dashboards:
-    #       - dashboard_id: '1860'
-    #         revision_id: '13'
-    #         datasource: prometheus
+    - include_role:
+        name: cloudalchemy.grafana
+      vars:
+        grafana_datasources:
+          - name: prometheus
+            type: prometheus
+            access: proxy
+            url: http://127.0.0.1:9090
+            basicAuth: false
+        grafana_security:
+          admin_user: admin
+          admin_password: nimda
+        grafana_dashboards:
+          - dashboard_id: '1860'
+            revision_id: '13'
+            datasource: prometheus
