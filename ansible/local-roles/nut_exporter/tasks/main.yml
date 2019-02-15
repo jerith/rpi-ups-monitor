@@ -7,6 +7,8 @@
     mode: 0755
     owner: "{{ prometheus_exporters_common_user }}"
     group: "{{ prometheus_exporters_common_group }}"
+  notify:
+    - restart_nut_exporter
 
 - name: deploy systemd unit
   template:

@@ -38,7 +38,7 @@ def fields_to_metrics(ups, fields):
         'ups.delay.shutdown',
         'ups.delay.start',
         'ups.load',
-    ]]
+    ] if field in fields]
     # ups.status is different.
     metrics.append('\n'.join([
         '# TYPE ups_status gauge',
