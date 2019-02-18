@@ -10,6 +10,8 @@
             driver: nutdrv_qx
             protocol: mustek
             desc: trini
+            pollfreq: 60
+            pollinterval: 5
 
     - include_role:
         name: UnderGreen.prometheus-node-exporter
